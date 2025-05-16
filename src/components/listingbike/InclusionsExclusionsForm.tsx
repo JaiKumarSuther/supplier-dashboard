@@ -62,7 +62,7 @@ const InclusionsExclusionsForm = () => {
 
       <div className="mb-8">
         <label className="block font-semibold text-sm mb-2">
-          What’s NOT included
+          What's NOT included
         </label>
         {excluded.map((item, idx) => (
           <div key={idx} className="relative mb-4">
