@@ -1,5 +1,7 @@
 import "./App.css";
 import Header from "./components/Header";
+import ListingTourSidebar from "./components/listingactivity/ListingTourSidebar";
+import PricingAddonsSection from "./components/listingactivity/PricingAddonsSection";
 import Sidebar from "./components/Sidebar";
 
 function App() {
@@ -8,8 +10,10 @@ function App() {
       <Sidebar />
       <div>
         <Header />
-        <main className="pt-[80px] p-4 bg-gray-100 min-h-screen lg:ml-[95px]">
-          {/* Content here */}
+        <main className="flex pt-[80px] p-4 min-h-screen lg:ml-[95px]">
+          <ListingTourSidebar/>
+          <PricingAddonsSection/>
+          
         </main>
       </div>
     </>
