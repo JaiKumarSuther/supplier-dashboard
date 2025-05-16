@@ -1,5 +1,3 @@
-
-
 const steps = [
   "Activity Media & Basics",
   "Title & Overview",

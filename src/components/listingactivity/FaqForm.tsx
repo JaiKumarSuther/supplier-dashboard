@@ -1,5 +1,5 @@
 import { useState } from "react";
-import ListingButtons from "./ListingButtons";
+import ListingButtons from "../ListingButtons";
 
 interface FaqItem {
   question: string;

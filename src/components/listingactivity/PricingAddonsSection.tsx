@@ -1,5 +1,5 @@
 import { useState } from "react";
-import ListingButtons from "./ListingButtons";
+import ListingButtons from "../ListingButtons";
 
 const PricingAddonsSection = () => {
   const [selectedType, setSelectedType] = useState("person");
