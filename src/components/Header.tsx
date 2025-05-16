@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import { useState } from "react";
 
 import searchIcon from "../../public/images/search icon.svg";
 import menuIcon from "../../public/images/alignleft-svgrepo-com (1).svg";

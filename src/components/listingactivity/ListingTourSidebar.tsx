@@ -1,4 +1,4 @@
-import React from "react";
+
 
 const steps = [
   "Activity Media & Basics",
@@ -10,7 +10,7 @@ const steps = [
   "Important Information",
 ];
 
-const ListingTourSidebar = ({ activeStep = 0, onStepClick = (index: number) => {} }) => {
+const ListingTourSidebar = ({ activeStep = 0, onStepClick = (_index: number) => {} }) => {
   return (
     <div className="w-[250px] p-5 rounded-lg hidden lg:block">
       <ul className="list-none">

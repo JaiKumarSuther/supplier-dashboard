@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import { useState } from "react";
 
 import logo from "../../public/images/NINJA logo.svg";
 import homeIcon from "../../public/images/HOME icon.svg";
