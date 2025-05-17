@@ -2,8 +2,10 @@ import "./App.css";
 import Header from "./components/Header";
 import ListingActivity from "./components/listingactivity/ListingActivity";
 import InclusionsExclusionsForm from "./components/listingbike/InclusionsExclusionsForm";
+import PayoutInfo from "./components/PayoutInfo";
+import MyReviews from "./components/Reviews";
 import Sidebar from "./components/Sidebar";
-import ListingBike from './components/listingbike/ListingBike'
+
 
 function App() {
   return (
@@ -13,8 +15,8 @@ function App() {
       <div>
         <main className="flex pt-[80px] p-4 min-h-screen lg:ml-[95px]">
           {/* <ListingActivity/> */}
-          {/* <InclusionsExclusionsForm/> */}
-          <ListingBike/>
+          {/* <PayoutInfo/> */}
+          <MyReviews/>
         </main>
       </div>
     </>
