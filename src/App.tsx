@@ -3,6 +3,7 @@ import Header from "./components/Header";
 import ListingActivity from "./components/listingactivity/ListingActivity";
 import InclusionsExclusionsForm from "./components/listingbike/InclusionsExclusionsForm";
 import PayoutInfo from "./components/PayoutInfo";
+import MyProfile from "./components/Profile";
 import MyReviews from "./components/Reviews";
 import Sidebar from "./components/Sidebar";
 
@@ -16,7 +17,8 @@ function App() {
         <main className="flex pt-[80px] p-4 min-h-screen lg:ml-[95px]">
           {/* <ListingActivity/> */}
           {/* <PayoutInfo/> */}
-          <MyReviews/>
+          {/* <MyReviews/> */}
+          <MyProfile/>
         </main>
       </div>
     </>
