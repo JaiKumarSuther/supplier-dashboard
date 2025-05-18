@@ -1,3 +1,5 @@
+import ListingSidebar from "../ui/ListingSidebar";
+
 const steps = [
   "Activity Media & Basics",
   "Title & Overview",
@@ -8,26 +10,11 @@ const steps = [
   "Important Information",
 ];
 
-const ListingTourSidebar = ({ activeStep = 0, onStepClick = (_index: number) => {} }) => {
-  return (
-    <div className="w-[250px] p-5 rounded-lg hidden lg:block">
-      <ul className="list-none">
-        {steps.map((step, index) => (
-          <li
-            key={index}
-            onClick={() => onStepClick(index)}
-            className={`py-2 cursor-pointer font-medium transition-colors ${
-              activeStep === index
-                ? "text-[#283456] font-semibold"
-                : "text-[#bfddd7] font-normal"
-            }`}
-          >
-            {step}
-          </li>
-        ))}
-      </ul>
-    </div>
-  );
+const ListingTourSidebar = ({
+  activeStep = 0,
+  onStepClick = (_index: number) => {},
+}) => {
+  return <ListingSidebar steps={steps} activeStep={activeStep} onStepClick={onStepClick} />;
 };
 
 export default ListingTourSidebar;

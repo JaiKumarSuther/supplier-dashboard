@@ -1,10 +1,7 @@
 import "./App.css";
 import Header from "./components/Header";
 import ListingActivity from "./components/listingactivity/ListingActivity";
-import InclusionsExclusionsForm from "./components/listingbike/InclusionsExclusionsForm";
-import PayoutInfo from "./components/PayoutInfo";
-import MyProfile from "./components/Profile";
-import MyReviews from "./components/Reviews";
+import CarListingActivity from "./components/listingcar/ListingCar";
 import Sidebar from "./components/Sidebar";
 
 
@@ -16,9 +13,7 @@ function App() {
       <div>
         <main className="flex pt-[80px] p-4 min-h-screen lg:ml-[95px]">
           {/* <ListingActivity/> */}
-          {/* <PayoutInfo/> */}
-          {/* <MyReviews/> */}
-          <MyProfile/>
+          <CarListingActivity/>
         </main>
       </div>
     </>

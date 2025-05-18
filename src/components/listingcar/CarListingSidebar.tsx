@@ -1,17 +1,17 @@
 import ListingSidebar from "../ui/ListingSidebar";
 
 const steps = [
-  "About the bike",
+  "About the car",
   "Pricing & Availability",
   "Inclusions & Exclusions",
   "Important Information",
 ];
 
-const ListingBikeSidebar = ({
+const CarListingSidebar = ({
   activeStep = 0,
   onStepClick = (_index: number) => {},
 }) => {
   return <ListingSidebar steps={steps} activeStep={activeStep} onStepClick={onStepClick} />;
 };
 
-export default ListingBikeSidebar;
+export default CarListingSidebar;

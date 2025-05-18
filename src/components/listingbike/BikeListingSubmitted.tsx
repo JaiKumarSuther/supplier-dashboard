@@ -1,12 +1,12 @@
-import VerifiedGif from '../../../public/images/verified_8948320.gif';
+import BikeSubmittedGif from '../../../public/images/verified_8948320.gif';
 import ListingSubmissionMessage from '../ui/ListingSubmissionMessage';
 
-const ActivityListingSubmitted = () => {
+const BikeListingSubmitted = () => {
   return (
     <ListingSubmissionMessage
-      image={VerifiedGif}
-      title="Your Activity Has Been Submitted"
-      description="Thank you for adding your activity to travelninja. Our team is currently reviewing your listing to ensure it meets our quality standards."
+      image={BikeSubmittedGif}
+      title="Your Bike Has Been Submitted"
+      description="Thank you for adding your bike to travelninja. Our team is currently reviewing your listing to ensure it meets our quality standards."
       sections={[
         {
           heading: 'Approval Process',
@@ -14,7 +14,7 @@ const ActivityListingSubmitted = () => {
         },
         {
           heading: 'Notifications',
-          content: 'We’ll notify you via email and dashboard once your activity is approved and live.',
+          content: 'We’ll notify you via email and dashboard once your bike is approved and live.',
         },
         {
           heading: 'Updates & Edits',
@@ -27,4 +27,4 @@ const ActivityListingSubmitted = () => {
   );
 };
 
-export default ActivityListingSubmitted;
+export default BikeListingSubmitted;

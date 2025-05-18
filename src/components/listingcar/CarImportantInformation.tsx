@@ -1,8 +1,8 @@
 import ImportantInfoForm from "../ui/ImportantInfoForm";
 
-const ImportantInformationListing = () => {
+export default function CarImportantInformation() {
   const handleBack = () => {
-    window.location.href = "pricing.html";
+    window.location.href = "inclusion.html";
   };
 
   const handleNext = () => {
@@ -14,13 +14,7 @@ const ImportantInformationListing = () => {
       heading="Important Information"
       onBack={handleBack}
       onNext={handleNext}
-      sections={[
-        { title: "Additional details" },
-        { title: "Not suitable for" },
-        { title: "What to bring" },
-      ]}
+      sections={[{ title: "Additional details" }]}
     />
   );
-};
-
-export default ImportantInformationListing;
+}
