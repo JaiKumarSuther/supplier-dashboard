@@ -1,4 +1,4 @@
-import { useEffect, useRef } from 'react';
+import  { useEffect, useRef } from 'react';
 import Chart from 'chart.js/auto';
 
 const RevenueComparisonChart = () => {
@@ -15,30 +15,49 @@ const RevenueComparisonChart = () => {
         datasets: [
           {
             label: 'Sales by month, 2024',
-            data: [200000, 250000, 300000, 350000, 400000, 550000, 500000, 400000, 350000, 300000, 250000, 200000],
-            borderColor: '#7250ff',  // Purple border for line to match legend border
-            backgroundColor: 'rgba(114, 80, 255, 0.1)',
-            tension: 0.5,
+            data: [200000, 300000, 350000, 400000, 550000, 500000, 400000, 350000, 300000, 250000, 200000],
+            borderColor: '#d1d5db', // light gray line
+            tension: 0.4,
             fill: false,
             pointRadius: 4,
             pointBackgroundColor: '#7250ff',
+            pointBorderColor: '#7250ff',
           },
           {
             label: 'Sales by month, 2025',
             data: [300000, 350000, 400000, 550000, 590000, 680000, 600000, 590000, 550000, 400000, 350000, 300000],
-            borderColor: '#49dbc2',
-            backgroundColor: 'rgba(73, 219, 194, 0.1)',
-            tension: 0.5,
+            borderColor: '#d1d5db',
+            tension: 0.4,
             fill: false,
             pointRadius: 4,
             pointBackgroundColor: '#49dbc2',
+            pointBorderColor: '#49dbc2',
           },
         ],
       },
       options: {
         responsive: true,
-        plugins: { legend: { display: false } },
-        scales: { y: { grid: { display: false } }, x: { grid: { display: false } } },
+        maintainAspectRatio: false,
+        plugins: {
+          legend: { display: false },
+        },
+        scales: {
+          y: {
+            grid: { display: false },
+            min: 200000,
+            max: 700000,
+            ticks: {
+              stepSize: 100000,
+              callback: function (tickValue: string | number) {
+                if (typeof tickValue === 'number') {
+                  return tickValue.toLocaleString(); // e.g., 200,000
+                }
+                return tickValue;
+              },
+            },
+          },
+          x: { grid: { display: false } },
+        },
       },
     });
 
@@ -46,44 +65,40 @@ const RevenueComparisonChart = () => {
   }, []);
 
   return (
-    <div className="bg-white rounded-lg shadow p-4 h-[300px]">
-      <h2 className="text-lg font-semibold mb-4">Revenue Comparison</h2>
-      <div className="flex h-[220px]">
-        {/* Chart container */}
-        <div className="relative flex-1">
+    <div className="bg-white rounded-lg shadow p-6 flex items-start h-[400px]">
+      {/* Left: Chart */}
+      <div className="flex-1">
+        <h2 className="text-lg font-bold mb-2">Revenue Comparison</h2>
+        <div className="relative w-full h-[320px]">
           <canvas ref={chartRef} className="absolute top-0 left-0 w-full h-full" />
         </div>
+      </div>
 
-        {/* Custom legend on right */}
-        <div className="ml-6 flex flex-col justify-center space-y-4 w-48">
-          <LegendItem color="#7250ff" label="Sales by month, 2024" />
-          <LegendItem color="#49dbc2" label="Sales by month, 2025" />
+      {/* Right Panel - Centered Circle */}
+      <div className="w-48 flex flex-col justify-center items-center ml-4 space-y-2 h-full">
+        {/* Big Circle */}
+        <div
+          className="w-24 h-24 rounded-full"
+          style={{
+            border: '5px solid #7250ff',
+            backgroundColor: '#ffffff',
+          }}
+        />
+
+        {/* Legends below the circle */}
+        <div className="space-y-1">
+          <LegendDot color="#7250ff" label="Sales by month, 2024" />
+          <LegendDot color="#49dbc2" label="Sales by month, 2025" />
         </div>
       </div>
     </div>
   );
 };
 
-// Legend item with white fill and thick purple border circle
-const LegendItem = ({
-  color,
-  label,
-}: {
-  color: string;
-  label: string;
-}) => (
-  <div className="flex items-center space-x-3">
-    <span
-      style={{
-        width: 16,
-        height: 16,
-        borderRadius: '50%',
-        border: `3px solid ${color}`, // thick border in color
-        backgroundColor: '#fff',     // white inside
-        display: 'inline-block',
-      }}
-    />
-    <span className="text-sm text-gray-700">{label}</span>
+const LegendDot = ({ color, label }: { color: string; label: string }) => (
+  <div className="flex items-center space-x-2">
+    <span className="inline-block w-3 h-3 rounded-full" style={{ backgroundColor: color }} />
+    <span className="text-xs text-gray-700">{label}</span>
   </div>
 );
 

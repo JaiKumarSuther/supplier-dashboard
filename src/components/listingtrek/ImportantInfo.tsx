@@ -11,6 +11,7 @@ export default function ImportantInfo() {
         sections={[
           { title: "Additional details" },
           { title: "Not suitable for" },
+          {title: "What to bring"}
         ]}
       />
     </div>

@@ -194,7 +194,6 @@ const TrekMediaBasics = () => {
         </div>
       </div>
 
-      {/* Language */}
       <div className="mb-4">
         <label className="block mb-1 font-semibold text-sm">Languages spoken by guide</label>
         <select
@@ -208,9 +207,6 @@ const TrekMediaBasics = () => {
         </select>
       </div>
 
-      
-
-      {/* Starts In */}
       <div className="mb-4">
         <label className="block mb-1 font-semibold text-sm">Starts in</label>
         <select

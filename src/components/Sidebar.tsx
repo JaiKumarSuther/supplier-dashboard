@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { Link, useLocation } from "react-router-dom";
 
 import logo from "../../public/images/NINJA logo.svg";
 import homeIcon from "../../public/images/HOME icon.svg";
@@ -11,17 +12,17 @@ import reviewsIcon from "../../public/images/REVIEWS icon.svg";
 import payoutsIcon from "../../public/images/PAYOUTS icon.svg";
 
 const Sidebar = () => {
-  const [activeIndex, setActiveIndex] = useState(0);
+  const location = useLocation();
 
   const navItems = [
-    { href: "dashboard.html", icon: homeIcon },
-    { href: "profile.html", icon: profileIcon },
-    { href: "booking.html", icon: bookingsIcon },
-    { href: "listing.html", icon: listingsIcon },
-    { href: "messages.html", icon: inboxIcon },
-    { href: "support.html", icon: supportIcon },
-    { href: "reviews.html", icon: reviewsIcon },
-    { href: "payments.html", icon: payoutsIcon },
+    { to: "/dashboard", icon: homeIcon },
+    { to: "/profile", icon: profileIcon },
+    { to: "/bookings", icon: bookingsIcon },
+    { to: "/listings", icon: listingsIcon },
+    { to: "/inbox", icon: inboxIcon },
+    { to: "/support", icon: supportIcon },
+    { to: "/reviews", icon: reviewsIcon },
+    { to: "/payouts", icon: payoutsIcon },
   ];
 
   return (
@@ -31,25 +32,28 @@ const Sidebar = () => {
       </div>
       <nav>
         <ul className="mt-6 list-none">
-          {navItems.map((item, index) => (
-            <li
-              key={index}
-              onClick={() => setActiveIndex(index)}
-              className={`p-3 mb-6 rounded-md cursor-pointer transition-transform active:scale-[0.96] hover:bg-gray-100 ${
-                activeIndex === index ? "bg-[#f9fffd] rounded-[7px]" : ""
-              }`}
-            >
-              <a href={item.href}>
-                <img
-                  src={item.icon}
-                  alt=""
-                  className={`w-[25px] mx-auto ${
-                    activeIndex === index ? "opacity-100" : "opacity-60"
-                  }`}
-                />
-              </a>
-            </li>
-          ))}
+          {navItems.map((item, index) => {
+            const isActive = location.pathname === item.to;
+
+            return (
+              <li
+                key={index}
+                className={`p-3 mb-6 rounded-md transition-transform active:scale-[0.96] hover:bg-gray-100 ${
+                  isActive ? "bg-[#f9fffd] rounded-[7px]" : ""
+                }`}
+              >
+                <Link to={item.to}>
+                  <img
+                    src={item.icon}
+                    alt=""
+                    className={`w-[25px] mx-auto ${
+                      isActive ? "opacity-100" : "opacity-60"
+                    }`}
+                  />
+                </Link>
+              </li>
+            );
+          })}
         </ul>
       </nav>
     </aside>

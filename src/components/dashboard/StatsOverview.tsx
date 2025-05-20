@@ -1,8 +1,11 @@
 import React from 'react';
-import revenueIcon from '../../../public/images/revmon icon in overview card.svg';
-import bookingIcon from '../../../public/images/Bookings icon in overview cards.svg';
+import revenueIcon from '../../../public/images/revmon icon in chart.svg';
+import bookingIcon from '../../../public/images/BOOKINGS icon.svg';
 import avgIcon from '../../../public/images/Average booking value icon in overview cards.svg';
 import ratingIcon from '../../../public/images/rev icon in overview card.svg';
+
+
+
 const stats = [
   {
     label: "This month's revenue",
@@ -58,4 +61,4 @@ const StatsOverview: React.FC = () => {
   );
 };
 
-export default StatsOverview;
+export default StatsOverview;

@@ -95,7 +95,7 @@ const PricingAddOns = () => {
               <button
                 type="button"
                 onClick={() => setSelectedType("person")}
-                className={`px-6 py-2 rounded-full text-sm font-medium transition border ${
+                className={`px-6 py-2 flex-1 rounded-full text-sm font-medium transition border ${
                   selectedType === "person"
                     ? "bg-emerald-700 text-white"
                     : "bg-white text-[#1e2a49] border-gray-300"
@@ -106,7 +106,7 @@ const PricingAddOns = () => {
               <button
                 type="button"
                 onClick={() => setSelectedType("booking")}
-                className={`px-6 py-2 rounded-full text-sm font-medium transition border ${
+                className={`px-6 py-2 flex-1 rounded-full text-sm font-medium transition border ${
                   selectedType === "booking"
                     ? "bg-emerald-700 text-white"
                     : "bg-white text-[#1e2a49] border-gray-300"

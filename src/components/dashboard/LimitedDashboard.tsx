@@ -1,42 +1,45 @@
-import StatsOverview from './StatsOverview';
-import ActivityFeed from './ActivityFeed';
-import MessagesPanel from './MessagesPanel';
-import RevenueComparisonChart from './RevenueComparisonChart';
-import BookingsChart from './BookingsChart';
-import RevenueChart from './RevenueChart';
-import BookingsTable from './BookingsTable';
+import ActivityFeed from "./ActivityFeed";
+import BookingsChart from "./BookingsChart";
+import BookingsTable from "./BookingsTable";
+import MessagesPanel from "./MessagesPanel";
+import RevenueChart from "./RevenueChart";
+import RevenueComparisonChart from "./RevenueComparisonChart";
+import StatsOverview from "./StatsOverview";
 
-const Dashboard = () => {
+const LimitedDashboard = () => {
   return (
-    <main className="min-h-screen bg-[#f9f9f9] px-4 sm:px-6 lg:px-8 py-8">
-      {/* Heading */}
-      <h1 className="text-[22px] sm:text-2xl font-bold text-[#283456] mb-6">
-        Welcome, Eventica Travels
-      </h1>
+    <div className="flex h-screen w-full">
+      {/* Dashboard Content */}
+      <div className="flex-grow bg-white">
+        <div className="px-4 py-6">
+          <h1 className="text-2xl font-bold mb-6 text-gray-800">
+            Welcome, Eventica Travels
+          </h1>
 
-      {/* Overview Stats */}
-      <StatsOverview />
+          <StatsOverview />
 
-      {/* Charts & Activity Grid */}
-      <div className="grid lg:grid-cols-3 gap-6 mt-6">
-        <div className="space-y-6 lg:col-span-1">
-          <ActivityFeed />
-          <MessagesPanel />
-        </div>
+          <div className="flex flex-col lg:flex-row gap-6 mt-6">
+            {/* Left Side */}
+            <div className="w-full lg:w-1/3 flex flex-col gap-6">
+              <ActivityFeed />
+              <MessagesPanel />
+            </div>
 
-        <div className="space-y-6 lg:col-span-2">
-          <RevenueComparisonChart />
-          <BookingsChart />
-          <RevenueChart />
+            {/* Right Side */}
+            <div className="w-full lg:w-2/3 flex flex-col gap-6">
+              <RevenueComparisonChart />
+              <BookingsChart />
+              <RevenueChart />
+            </div>
+          </div>
+
+          <div className="mt-6">
+            <BookingsTable />
+          </div>
         </div>
       </div>
-
-      {/* Bookings Table */}
-      <div className="mt-8">
-        <BookingsTable />
-      </div>
-    </main>
+    </div>
   );
 };
 
-export default Dashboard;
+export default LimitedDashboard;

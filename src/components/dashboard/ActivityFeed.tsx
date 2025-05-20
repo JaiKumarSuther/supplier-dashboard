@@ -1,3 +1,5 @@
+import React from 'react';
+import { ClockIcon } from '@heroicons/react/24/outline';
 
 const activities = [
   {
@@ -15,7 +17,8 @@ const activities = [
   {
     type: 'payout processed',
     time: '1 hr ago',
-    message: 'Your payout of PKR 456,400 for booking# F81237-23478 has been processed.',
+    message:
+      'Your payout of PKR 456,400 for booking# F81237-23478 has been processed.',
   },
   {
     type: 'review received',
@@ -24,18 +27,67 @@ const activities = [
   },
 ];
 
-const typeColors: Record<string, { text: string; bg: string; hoverBg: string }> = {
-  'new booking': { text: 'text-blue-600', bg: 'bg-blue-100', hoverBg: 'bg-blue-200' },
-  'booking cancelled': { text: 'text-orange-600', bg: 'bg-orange-100', hoverBg: 'bg-orange-200' },
-  'payout processed': { text: 'text-green-600', bg: 'bg-green-100', hoverBg: 'bg-green-200' },
-  'review received': { text: 'text-purple-600', bg: 'bg-purple-100', hoverBg: 'bg-purple-200' },
+const typeColors: Record<
+  string,
+  { text: string; bg: string; hoverBg: string }
+> = {
+  'new booking': {
+    text: 'text-blue-600',
+    bg: 'bg-blue-100',
+    hoverBg: 'bg-blue-200',
+  },
+  'booking cancelled': {
+    text: 'text-orange-600',
+    bg: 'bg-orange-100',
+    hoverBg: 'bg-orange-200',
+  },
+  'payout processed': {
+    text: 'text-green-600',
+    bg: 'bg-green-100',
+    hoverBg: 'bg-green-200',
+  },
+  'review received': {
+    text: 'text-purple-600',
+    bg: 'bg-purple-100',
+    hoverBg: 'bg-purple-200',
+  },
+};
+
+const boldPhrases = [
+  'Day Colors of Hunza Valley Cultural Tour',
+  '14 Days K2 Base Camp Trekking Expedition',
+  'PKR 456,400 for booking# F81237-23478',
+  'Wamiq Ahmed',
+  '4-star',
+];
+
+const renderBoldMessage = (message: string): React.ReactNode => {
+  let parts: React.ReactNode[] = [message];
+
+  boldPhrases.forEach((phrase, index) => {
+    parts = parts.flatMap((part): React.ReactNode[] => {
+      if (typeof part === 'string' && part.includes(phrase)) {
+        const split = part.split(phrase);
+        return [
+          split[0],
+          <strong key={`${phrase}-${index}`}>{phrase}</strong>,
+          split[1] || '',
+        ] as React.ReactNode[];
+      }
+      return [part];
+    });
+  });
+
+  return <>{parts}</>;
 };
 
 const ActivityFeed: React.FC = () => {
   return (
-    <div className="bg-white rounded-lg shadow p-4 mb-6">
-      <h2 className="text-lg font-semibold mb-4">Recent Activity</h2>
-      <ul className="space-y-4 text-sm text-gray-700">
+    <div className="bg-white rounded-lg shadow p-6 mb-6">
+      <h2 className="text-lg font-semibold mb-2">Recent Activity</h2>
+      <div className="w-full border-b border-gray-300 mb-6"></div>
+
+      <ul className="space-y-6 text-sm text-gray-700">
         {activities.map((activity, idx) => {
           const color =
             typeColors[activity.type] || {
@@ -43,17 +95,25 @@ const ActivityFeed: React.FC = () => {
               bg: 'bg-gray-100',
               hoverBg: 'bg-gray-200',
             };
+
           return (
-            <li key={idx} className="border-b pb-3">
-              <div className="flex justify-between text-xs font-semibold text-gray-500 mb-1">
-                <span
-                  className={`${color.text} ${color.bg} px-2 py-1 rounded cursor-pointer hover:${color.hoverBg} transition-colors duration-200`}
+            <li key={idx} className="flex flex-col space-y-2">
+              <div className="flex items-center gap-2">
+                {/* Type label */}
+                <div
+                  className={`inline-flex items-center gap-2 px-2 py-1 rounded ${color.text} ${color.bg} hover:${color.hoverBg} transition-colors duration-200 text-xs font-semibold cursor-pointer`}
                 >
                   {activity.type.charAt(0).toUpperCase() + activity.type.slice(1)}
-                </span>
-                <span className="text-gray-400">{activity.time}</span>
+                </div>
+
+                {/* Time next to it */}
+                <div className="flex items-center text-gray-400 text-xs gap-1 cursor-default">
+                  <ClockIcon className="w-4 h-4" />
+                  <span>{activity.time}</span>
+                </div>
               </div>
-              <p>{activity.message}</p>
+
+              <p className="text-sm">{renderBoldMessage(activity.message)}</p>
             </li>
           );
         })}
