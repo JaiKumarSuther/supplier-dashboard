@@ -37,7 +37,7 @@ export default function ListingActivity() {
   return (
     <div className="flex">
       <ListingTourSidebar activeStep={activeStep} onStepClick={setActiveStep} />
-      <div className="flex-1 p-6">{renderStepComponent()}</div>
+      <div className="flex-1">{renderStepComponent()}</div>
     </div>
   );
 }

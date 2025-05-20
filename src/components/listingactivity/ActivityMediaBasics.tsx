@@ -15,7 +15,7 @@ const ActivityMediaBasics = () => {
   const [availability, setAvailability] = useState("");
 
   return (
-    <form className="max-w-5xl w-[650px] px-4 sm:px-6 lg:px-8 py-6">
+    <form className="max-w-5xl  md:w-[650px]  py-2">
       <h2 className="text-2xl font-bold text-[#1e2a49] mb-6">
         Activity Media & Basics
       </h2>
