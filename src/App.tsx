@@ -1,5 +1,5 @@
 import "./App.css";
-import { Routes, Route } from "react-router-dom";
+import { Routes, Route, Navigate } from "react-router-dom";
 
 import Header from "./components/Header";
 import Sidebar from "./components/Sidebar";
@@ -25,6 +25,7 @@ function App() {
       <div>
         <main className="flex pt-[80px] p-4 min-h-screen lg:ml-[95px]">
           <Routes>
+            <Route path="/" element={<Navigate to="/dashboard" replace />} />
             <Route path="/dashboard" element={<LimitedDashboard />} />
             <Route path="/profile" element={<MyProfile />} />
             <Route path="/bookings" element={<BookingInfo />} />

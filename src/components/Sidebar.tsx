@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 import { Link, useLocation } from "react-router-dom";
 
 import logo from "../../public/images/NINJA logo.svg";
@@ -36,13 +36,13 @@ const Sidebar = () => {
             const isActive = location.pathname === item.to;
 
             return (
-              <li
-                key={index}
-                className={`p-3 mb-6 rounded-md transition-transform active:scale-[0.96] hover:bg-gray-100 ${
-                  isActive ? "bg-[#f9fffd] rounded-[7px]" : ""
-                }`}
-              >
-                <Link to={item.to}>
+              <li key={index}>
+                <Link
+                  to={item.to}
+                  className={`block p-3 mb-6 rounded-md transition-transform active:scale-[0.96] hover:bg-gray-100 ${
+                    isActive ? "bg-[#f9fffd] rounded-[7px]" : ""
+                  }`}
+                >
                   <img
                     src={item.icon}
                     alt=""
