@@ -41,7 +41,7 @@ const ItineraryForm = () => {
 
           <div className="relative mb-4">
             <textarea
-              placeholder="Day/Time"
+              placeholder="i.e Day 1"
               value={item.time}
               onChange={(e) => handleChange(index, "time", e.target.value)}
               maxLength={20}
@@ -54,7 +54,7 @@ const ItineraryForm = () => {
 
           <div className="relative mb-4">
             <textarea
-              placeholder="Title"
+              placeholder="i.e Arrival in Islamabad"
               value={item.title}
               onChange={(e) => handleChange(index, "title", e.target.value)}
               maxLength={70}
@@ -67,7 +67,7 @@ const ItineraryForm = () => {
 
           <div className="relative">
             <textarea
-              placeholder="Overview"
+              placeholder="i.e Our day begins in..."
               value={item.overview}
               onChange={(e) => handleChange(index, "overview", e.target.value)}
               maxLength={400}

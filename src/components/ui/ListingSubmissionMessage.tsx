@@ -1,4 +1,4 @@
-import React from 'react';
+import React from "react";
 
 interface Section {
   heading: string;
@@ -9,7 +9,7 @@ interface ListingSubmissionMessageProps {
   image: string;
   title: string;
   description: string;
-  sections: Section[];
+  sections?: Section[];
   buttonLabel: string;
   onButtonClick: () => void;
 }
@@ -18,46 +18,39 @@ const ListingSubmissionMessage: React.FC<ListingSubmissionMessageProps> = ({
   image,
   title,
   description,
-  sections,
+  sections = [],
   buttonLabel,
   onButtonClick,
 }) => {
   return (
-    <main className="w-full flex justify-center px-4 py-10">
-      <div className="w-[450px]">
-        {/* Icon */}
-        <div className="mb-6">
-          <img src={image} alt="Submitted" className="w-[100px] h-[100px]" />
-        </div>
+    <div className="max-w-2xl mx-auto text-center px-6 py-12">
+      <img
+        src={image}
+        alt="Submission Status"
+        className="w-28 h-28 mx-auto mb-6"
+      />
 
-        {/* Title */}
-        <h2 className="text-2xl font-bold text-[#1e2a49] mb-4">{title}</h2>
+      <h1 className="text-2xl font-bold text-[#1e2a49] mb-4">{title}</h1>
+      <p className="text-gray-600 mb-8">{description}</p>
 
-        {/* Description */}
-        <p className="text-[#1e2a49] text-base font-normal mb-6 leading-relaxed">
-          {description}
-        </p>
-
-        {/* Dynamic Sections */}
+      <div className="text-left space-y-6 mb-10">
         {sections.map((section, index) => (
-          <div key={index} className="mb-5">
-            <p className="text-[#1e2a49] font-semibold text-base mb-1">
+          <div key={index}>
+            <h3 className="font-semibold text-[#1e2a49] mb-1">
               {section.heading}
-            </p>
-            <p className="text-[#1e2a49] text-base font-normal">{section.content}</p>
+            </h3>
+            <p className="text-gray-600 text-sm">{section.content}</p>
           </div>
         ))}
-
-        {/* Button */}
-        <button
-          type="button"
-          onClick={onButtonClick}
-          className="px-6 py-2 border border-gray-300 rounded-full text-sm text-[#707D99] hover:bg-gray-50 transition"
-        >
-          {buttonLabel}
-        </button>
       </div>
-    </main>
+
+      <button
+        onClick={onButtonClick}
+        className="bg-emerald-600 text-white px-6 py-2 rounded-full hover:bg-emerald-700 transition"
+      >
+        {buttonLabel}
+      </button>
+    </div>
   );
 };
 
