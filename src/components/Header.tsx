@@ -9,12 +9,12 @@ import profileIcon from "../../public/images/PROFILE icon.svg";
 import bookingsIcon from "../../public/images/BOOKINGS icon.svg";
 import listingsIcon from "../../public/images/LISTINGS.svg";
 import inboxIcon from "../../public/images/INBOX icon.svg";
-import supportIcon from "../../public/images/SUPPORT icon.svg";
+import supportIcon from "../../public/images/suppo_2.svg";
 import reviewsIcon from "../../public/images/REVIEWS icon.svg";
 import payoutsIcon from "../../public/images/PAYOUTS icon.svg";
 import logoutIcon from "../../public/images/log out icon.svg";
-import support2Icon from "../../public/images/support2.svg";
-import notificationIcon from "../../public/images/notif_1.svg";
+import support2Icon from "../../public/images/suppo_2.svg";
+import notificationIcon from "../../public/images/notification icon in header.svg";
 
 const Header = () => {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
@@ -72,28 +72,28 @@ const Header = () => {
         </div>
 
         {/* Desktop Right Section */}
-        <div className="hidden lg:flex items-center gap-5">
+        <div className="hidden lg:flex items-center gap-8">
           <img src={support2Icon} alt="Support" width="22px" />
           <img src={notificationIcon} alt="Notifications" width="22px" />
           <div className="flex items-center gap-2">
             <img
               src={profileImage}
               alt="User"
-              className="w-[38px] h-[38px] rounded-full border"
+              className="w-[32px] h-[32px] p-1 rounded-full border"
             />
             <div>
-              <p className="text-sm font-medium text-gray-800">
+              <p className="text-base font-medium text-gray-800">
                 Eventica Travels
               </p>
-              <p className="text-xs text-gray-500">Tour operator</p>
+              {/* <p className="text-xs text-gray-500">Tour operator</p> */}
             </div>
           </div>
-          <a
+          {/* <a
             href="#"
             className="flex items-center gap-2 text-[#666262] text-sm"
           >
             <img src={logoutIcon} alt="logout" className="w-[18px]" /> Log Out
-          </a>
+          </a> */}
         </div>
       </header>
 
