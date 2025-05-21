@@ -52,7 +52,7 @@ const SupportPage = () => {
                 <img src={sortIcon} alt="Sort" className="w-4" /> sort by
               </button>
               {sortOpen && (
-                <div className="absolute z-10 bg-white border border-gray-200 shadow-md rounded-md p-4 mt-2 w-64 text-sm">
+                <div className="absolute right-0 z-10 bg-white border border-gray-200 shadow-md rounded-md p-4 mt-2 w-48 text-sm">
                   <h2 className="font-semibold mb-2">Sort by</h2>
                   <label className="block mb-1">
                     <input type="checkbox" className="mr-2" /> Newest First
@@ -69,10 +69,16 @@ const SupportPage = () => {
         {/* Table */}
         <div className="overflow-x-auto">
           <table className="table-auto w-full text-sm min-w-[768px] border">
-            <thead className="bg-white border-b">
-              <tr className="text-left">
+            <thead>
+              <tr
+                className="text-left bg-white border-b
+                hover:bg-[#f8fbff] cursor-pointer transition-colors duration-200"
+              >
                 {["ID", "Related to", "Opened", "Subject", "closed", "Status"].map((header) => (
-                  <th key={header} className="py-3 px-4 font-semibold border-r border-gray-200 last:border-r-0">
+                  <th
+                    key={header}
+                    className="py-4 px-6 font-semibold border-r border-gray-200 last:border-r-0 select-none"
+                  >
                     {header}
                   </th>
                 ))}
@@ -83,13 +89,13 @@ const SupportPage = () => {
                 { id: "F73DH", related: "Payouts", opened: "22 July 2025 7:21 PM", subject: "Missing payout for febraury bookin...", closed: "22 July 2025 7:21 PM", status: "Open" },
                 { id: "F73DH", related: "Payouts", opened: "22 July 2025 7:21 PM", subject: "Missing payout for febraury bookin...", closed: "22 July 2025 7:21 PM", status: "Closed" },
               ].map((item, i) => (
-                <tr key={i} className="border-t hover:bg-[#f8fbff] cursor-pointer">
-                  <td className="px-4 py-2 font-medium text-green-600 border-r">{item.id}</td>
-                  <td className="px-4 py-2 border-r">{item.related}</td>
-                  <td className="px-4 py-2 border-r">{item.opened}</td>
-                  <td className="px-4 py-2 border-r">{item.subject}</td>
-                  <td className="px-4 py-2 border-r">{item.closed}</td>
-                  <td className="px-4 py-2 font-medium text-[#04a550]">
+                <tr key={i} className="border-t hover:bg-[#f8fbff] cursor-pointer transition-colors duration-150">
+                  <td className="px-6 py-3 font-medium text-green-600 border-r">{item.id}</td>
+                  <td className="px-6 py-3 border-r">{item.related}</td>
+                  <td className="px-6 py-3 border-r">{item.opened}</td>
+                  <td className="px-6 py-3 border-r">{item.subject}</td>
+                  <td className="px-6 py-3 border-r">{item.closed}</td>
+                  <td className="px-6 py-3 font-medium text-[#04a550]">
                     {item.status === "Closed" ? (
                       <span className="text-gray-500">Closed</span>
                     ) : (
