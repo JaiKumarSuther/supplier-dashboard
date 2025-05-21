@@ -28,7 +28,7 @@ export default function MyProfile() {
         {/* Box 1: Business Info */}
         <div className="border border-[#E5E7EB] rounded-lg overflow-hidden">
           <div className="border-b border-[#E5E7EB] px-6 py-4">
-            <h3 className="text-sm font-semibold text-[#1C1C38]">
+            <h3 className="text-xl font-semibold text-[#1C1C38]">
               Business Information
             </h3>
           </div>
@@ -46,11 +46,11 @@ export default function MyProfile() {
 
             <div className="flex flex-wrap justify-between gap-y-6">
               {[
-                { label: "Business Name", value: "Eventica Travels" },
-                { label: "Business Email", value: "info@eventicatravels.com" },
-                { label: "Telephone", value: "..." },
-                { label: "Phone Number", value: "03093379100" },
-                { label: "Contact person's name", value: "03093379100" },
+                { label: "Business Name", value: "Eventica Travels" , color: "text-[#707d99]" },
+                { label: "Business Email", value: "info@eventicatravels.com" , color: "text-[#707d99]"  },
+                { label: "Telephone", value: "..." , color: "text-[#707d99]" },
+                { label: "Phone Number", value: "03093379100" , color: "text-[#707d99]" },
+                { label: "Contact person's name", value: "03093379100" , color: "text-[#707d99]" },
                 {
                   label: "Access to International Tourists",
                   value: "Allowed",
@@ -59,7 +59,7 @@ export default function MyProfile() {
                 {
                   label: "Access to Group Tours",
                   value: "Not allowed",
-                  color: "text-red-600",
+                  color: "text-[#990202]",
                 },
               ].map(({ label, value, color }, idx) => (
                 <div key={idx} className="w-[30%] min-w-[240px]">
@@ -68,7 +68,7 @@ export default function MyProfile() {
                   </label>
                   <p className={`text-sm ${color || "text-[#1C1C38]"}`}>
                     {value}
-                  </p>
+                  </p>  
                 </div>
               ))}
 
@@ -76,7 +76,7 @@ export default function MyProfile() {
                 <label className="text-sm font-semibold text-[#1C1C38] block mb-1">
                   Office Address
                 </label>
-                <p className="text-sm text-[#1C1C38]">
+                <p className="text-sm text-[#707d99]">
                   Plot # F-68, 1st Floor, near Iqra University Main Campus,
                   Phase 2 Defence View Housing Society
                 </p>
@@ -88,7 +88,7 @@ export default function MyProfile() {
         {/* Box 2: Account Details */}
         <div className="border border-[#E5E7EB] rounded-lg overflow-hidden">
           <div className="border-b border-[#E5E7EB] px-6 py-4">
-            <h3 className="text-sm font-semibold text-[#1C1C38]">
+            <h3 className="text-xl font-semibold text-[#1C1C38]">
               Account details
             </h3>
           </div>
@@ -97,7 +97,7 @@ export default function MyProfile() {
               <label className="text-sm font-semibold text-[#1C1C38] block mb-1">
                 Email
               </label>
-              <p className="text-sm text-[#1C1C38]">info@eventicatravels.com</p>
+              <p className="text-sm text-[#707d99]">info@eventicatravels.com</p>
             </div>
 
             <div className="flex flex-wrap gap-4 mb-4">
@@ -141,39 +141,67 @@ export default function MyProfile() {
         {/* Box 3: Bank Account Details */}
         <div className="border border-[#E5E7EB] rounded-lg overflow-hidden">
           <div className="border-b border-[#E5E7EB] px-6 py-4">
-            <h3 className="text-sm font-semibold text-[#1C1C38]">
+            <h3 className="text-xl font-semibold text-[#1C1C38]">
               Bank Account Details
             </h3>
           </div>
           <div className="px-6 pt-6 pb-8">
-            <div className="flex flex-wrap gap-4 mb-4">
-              {(
-                [
-                  { label: "Bank", key: "bank" },
-                  { label: "Branch Code", key: "branchCode" },
-                  { label: "Account Title", key: "accountTitle" },
-                  { label: "Account Number", key: "accountNumber" },
-                  { label: "IBAN Number", key: "iban" },
-                ] as const
-              ).map((field) => (
-                <div key={field.key} className="flex-1 min-w-[250px]">
-                  <label className="text-sm font-semibold text-[#1C1C38] block mb-1">
-                    {field.label}
-                  </label>
-                  <input
-                    type="text"
-                    value={bankDetails[field.key]}
-                    onChange={(e) =>
-                      setBankDetails((prev) => ({
-                        ...prev,
-                        [field.key]: e.target.value,
-                      }))
-                    }
-                    className="w-full border border-[#e5e7eb] p-2 rounded"
-                  />
+            <div className="flex flex-col gap-4 mb-4">
+                {/* First row: Bank & Branch Code */}
+                <div className="flex flex-wrap gap-6">
+                  {(
+                    [
+                      { label: "Bank", key: "bank" },
+                      { label: "Branch Code", key: "branchCode" },
+                    ] as const
+                  ).map((field) => (
+                    <div key={field.key} className="min-w-[250px]">
+                      <label className="text-sm font-semibold text-[#1C1C38] block mb-1">
+                        {field.label}
+                      </label>
+                      <input
+                        type="text"
+                        value={bankDetails[field.key]}
+                        onChange={(e) =>
+                          setBankDetails((prev) => ({
+                            ...prev,
+                            [field.key]: e.target.value,
+                          }))
+                        }
+                        className="w-full border border-[#e5e7eb] p-2 rounded"
+                      />
+                    </div>
+                  ))}
                 </div>
-              ))}
-            </div>
+
+                {/* Second row: Account Title, Account Number, IBAN Number */}
+                <div className="flex flex-wrap gap-6">
+                  {(
+                    [
+                      { label: "Account Title", key: "accountTitle" },
+                      { label: "Account Number", key: "accountNumber" },
+                      { label: "IBAN Number", key: "iban" },
+                    ] as const
+                  ).map((field) => (
+                    <div key={field.key} className="min-w-[250px]">
+                      <label className="text-sm font-semibold text-[#1C1C38] block mb-1">
+                        {field.label}
+                      </label>
+                      <input
+                        type="text"
+                        value={bankDetails[field.key]}
+                        onChange={(e) =>
+                          setBankDetails((prev) => ({
+                            ...prev,
+                            [field.key]: e.target.value,
+                          }))
+                        }
+                        className="w-full border border-[#e5e7eb] p-2 rounded"
+                      />
+                    </div>
+                  ))}
+                </div>
+              </div>
             <button className="bg-[#008558] text-white px-6 py-2 rounded-full text-sm">
               Add Account
             </button>

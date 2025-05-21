@@ -33,16 +33,16 @@ export default function MyReviews() {
       </div>
 
       {/* Ratings Summary */}
-      <div className="flex flex-col lg:flex-row gap-6 bg-white p-4 rounded-lg border border-gray-200 mb-10">
-        <div className="flex flex-col justify-center items-center w-full lg:w-1/4 border-b lg:border-b-0 lg:border-r border-gray-200 pb-4 lg:pb-0 lg:pr-4">
-          <h2 className="text-4xl font-bold" style={{ color: greenColor }}>
+      <div className="flex flex-col lg:flex-row lg:justify-between gap-6 bg-white py-8 px-4 rounded-lg border border-gray-200 mb-10">
+        <div className="flex flex-col justify-center items-center w-full lg:w-1/6 border-b lg:border-b-0 lg:border-r border-gray-200 pb-4 lg:pb-0 lg:pr-4">
+          <h2 className="text-6xl font-bold" style={{ color: greenColor }}>
             4.0
           </h2>
-          <div className="flex items-center justify-center mt-1">
+          <div className="flex items-center gap-1 justify-center mt-1">
             {[...Array(4)].map((_, i) => (
-              <img key={i} src={StarIcon} alt="star" className="w-4 h-4" />
+              <img key={i} src={StarIcon} alt="star" className="w-5 h-5" />
             ))}
-            <img src={BorderStar} alt="empty star" className="w-4 h-4" />
+            <img src={BorderStar} alt="empty star" className="w-5 h-5" />
           </div>
           <small className="text-sm text-gray-600 mt-1">21 Reviews</small>
         </div>
@@ -55,9 +55,9 @@ export default function MyReviews() {
             { rating: 1, count: 0, percent: 0 },
           ].map((bar) => (
             <div key={bar.rating} className="flex items-center gap-3 text-sm">
-              <div className="flex-1 bg-gray-100 rounded-full h-2">
+              <div className="flex-1 bg-gray-100 rounded-full h-[11px]">
                 <div
-                  className="h-2 rounded-full"
+                  className="h-[11px] rounded-full"
                   style={{ width: `${bar.percent}%`, backgroundColor: greenColor }}
                 ></div>
               </div>
