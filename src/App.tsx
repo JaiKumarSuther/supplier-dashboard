@@ -4,7 +4,6 @@ import { Routes, Route, Navigate } from "react-router-dom";
 import Header from "./components/Header";
 import Sidebar from "./components/Sidebar";
 
-import LimitedDashboard from "./components/dashboard/LimitedDashboard";
 import MyProfile from "./components/Profile";
 import BookingInfo from "./components/BookingInfo";
 import ListingActivity from "./components/listingactivity/ListingActivity";
@@ -16,6 +15,7 @@ import SupportTicket from "./components/SupportTicket";
 import MyReviews from "./components/Reviews";
 import PayoutInfoProcessed from "./components/PayoutInfo";
 import PayoutInfoPending from "./components/PayoutInfoPending";
+import LimitedDashboard from "./components/dashboard/LimitedDashboard";
 
 function App() {
   return (

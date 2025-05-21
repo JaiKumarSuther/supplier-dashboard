@@ -8,7 +8,7 @@ import StatsOverview from "./StatsOverview";
 
 const LimitedDashboard = () => {
   return (
-    <div className="flex h-screen w-full">
+    <div className="flex pb-20 w-full h-full">
       {/* Dashboard Content */}
       <div className="flex-grow bg-white">
         <div className="px-4 py-6">
@@ -20,7 +20,7 @@ const LimitedDashboard = () => {
 
           <div className="flex flex-col lg:flex-row gap-6 mt-6">
             {/* Left Side */}
-            <div className="w-full lg:w-1/3 flex flex-col gap-6">
+            <div className="w-full lg:w-1/3 flex flex-col gap-0">
               <ActivityFeed />
               <MessagesPanel />
             </div>

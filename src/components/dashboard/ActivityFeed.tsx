@@ -27,36 +27,30 @@ const activities = [
   },
 ];
 
-const typeColors: Record<
-  string,
-  { text: string; bg: string; hoverBg: string }
-> = {
+const typeColors: Record<string, { text: string; bg: string }> = {
   'new booking': {
-    text: 'text-blue-600',
-    bg: 'bg-blue-100',
-    hoverBg: 'bg-blue-200',
+    text: 'text-[#3484e3]',     // slightly faded blue
+    bg: 'bg-[#e9f2fe]',         // very light sky-blue
   },
   'booking cancelled': {
-    text: 'text-orange-600',
-    bg: 'bg-orange-100',
-    hoverBg: 'bg-orange-200',
+    text: 'text-[#f9735a]',     // coral-orange
+    bg: 'bg-[#fff1eb]',         // creamy peach background
   },
   'payout processed': {
-    text: 'text-green-600',
-    bg: 'bg-green-100',
-    hoverBg: 'bg-green-200',
+    text: 'text-[#00c896]',     // aqua green
+    bg: 'bg-[#edfcf7]',         // mint background
   },
   'review received': {
-    text: 'text-purple-600',
-    bg: 'bg-purple-100',
-    hoverBg: 'bg-purple-200',
+    text: 'text-[#9b59f5]',     // soft violet
+    bg: 'bg-[#f4eefe]',         // lavender background
   },
 };
 
 const boldPhrases = [
   'Day Colors of Hunza Valley Cultural Tour',
   '14 Days K2 Base Camp Trekking Expedition',
-  'PKR 456,400 for booking# F81237-23478',
+  'PKR 456,400',
+  'booking# F81237-23478',
   'Wamiq Ahmed',
   '4-star',
 ];
@@ -70,9 +64,11 @@ const renderBoldMessage = (message: string): React.ReactNode => {
         const split = part.split(phrase);
         return [
           split[0],
-          <strong key={`${phrase}-${index}`}>{phrase}</strong>,
+          <strong key={`${phrase}-${index}`} className="font-semibold text-[#1e2a49]">
+            {phrase}
+          </strong>,
           split[1] || '',
-        ] as React.ReactNode[];
+        ];
       }
       return [part];
     });
@@ -83,37 +79,38 @@ const renderBoldMessage = (message: string): React.ReactNode => {
 
 const ActivityFeed: React.FC = () => {
   return (
-    <div className="bg-white rounded-lg shadow p-6 mb-6">
-      <h2 className="text-lg font-semibold mb-2">Recent Activity</h2>
-      <div className="w-full border-b border-gray-300 mb-6"></div>
+    <div className="bg-white rounded-lg border mb-6">
+      {/* Header */}
+      <h2 className="text-lg font-semibold border-b border-gray-200 p-6 text-[#1e2a49]">Recent Activity</h2>
 
-      <ul className="space-y-6 text-sm text-gray-700">
+
+      {/* List */}
+      <ul className="space-y-6 text-sm text-gray-800 p-6">
         {activities.map((activity, idx) => {
-          const color =
-            typeColors[activity.type] || {
-              text: 'text-gray-600',
-              bg: 'bg-gray-100',
-              hoverBg: 'bg-gray-200',
-            };
+          const color = typeColors[activity.type] || {
+            text: 'text-gray-600',
+            bg: 'bg-gray-100',
+          };
 
           return (
-            <li key={idx} className="flex flex-col space-y-2">
+            <li key={idx} className="space-y-2">
+              {/* Type + Time */}
               <div className="flex items-center gap-2">
-                {/* Type label */}
                 <div
-                  className={`inline-flex items-center gap-2 px-2 py-1 rounded ${color.text} ${color.bg} hover:${color.hoverBg} transition-colors duration-200 text-xs font-semibold cursor-pointer`}
+                  className={`inline-flex items-center px-2 py-[2px] rounded-md ${color.text} ${color.bg} text-xs font-semibold`}
                 >
-                  {activity.type.charAt(0).toUpperCase() + activity.type.slice(1)}
+                  {activity.type}
                 </div>
-
-                {/* Time next to it */}
-                <div className="flex items-center text-gray-400 text-xs gap-1 cursor-default">
+                <div className="flex items-center text-gray-400 text-xs gap-1">
                   <ClockIcon className="w-4 h-4" />
                   <span>{activity.time}</span>
                 </div>
               </div>
 
-              <p className="text-sm">{renderBoldMessage(activity.message)}</p>
+              {/* Message */}
+              <p className="text-sm leading-relaxed text-[#1e2a49]">
+                {renderBoldMessage(activity.message)}
+              </p>
             </li>
           );
         })}
