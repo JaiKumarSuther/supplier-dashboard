@@ -16,6 +16,7 @@ import PayoutInfoPending from "./components/PayoutInfoPending";
 import LimitedDashboard from "./components/dashboard/LimitedDashboard";
 import BookingPage from "./components/BookingPage";
 import Listings from "./components/Listings";
+import PayoutPage from "./components/PayoutPage";
 
 function App() {
   return (
@@ -36,8 +37,7 @@ function App() {
             <Route path="/support/closed" element={<SupportDetailsClosed />} />
             <Route path="/support/ticket" element={<SupportTicket />} />
             <Route path="/reviews" element={<MyReviews />} />
-            <Route path="/payouts" element={<PayoutInfoProcessed />} />
-            <Route path="/payouts/pending" element={<PayoutInfoPending />} />
+            <Route path="/payouts" element={<PayoutPage />} />
           </Routes>
         </main>
       </div>
