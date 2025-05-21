@@ -57,8 +57,8 @@ const bookings: Booking[] = [
 
 const statusColors: Record<BookingStatus, string> = {
   Confirmed: "text-green-600 font-semibold",
-  Cancelled: "text-gray-700",  // unified gray text
-  Completed: "text-gray-700",  // unified gray text
+  Cancelled: "text-gray-700",
+  Completed: "text-gray-700",
 };
 
 const BookingsPage = () => {

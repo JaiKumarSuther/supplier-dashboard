@@ -58,17 +58,29 @@ const Listings = () => {
               </div>
 
               {/* Filter */}
-              <div className="relative">
+              <div
+                className="relative"
+                tabIndex={0}
+                onBlur={() => setFilterOpen(false)}
+              >
                 <button
                   onClick={() => setFilterOpen(!filterOpen)}
                   className="flex items-center gap-2 border border-gray-300 px-4 py-2 rounded-full text-sm"
+                  type="button"
                 >
                   <img src={filterIcon} alt="Filter" className="w-4" /> Filter by
                 </button>
                 {filterOpen && (
-                  <div className="absolute z-10 bg-white border border-gray-200 shadow-md rounded-md p-4 mt-2 w-64 text-sm">
+                  <div className="absolute right-0 z-10 bg-white border border-gray-200 shadow-md rounded-md p-4 mt-2 w-64 text-sm">
                     <h2 className="font-semibold mb-2">Filter by</h2>
-                    {["Tours", "Treks", "Group only", "Private only", "For international tourists", "For local tourists"].map((text) => (
+                    {[
+                      "Tours",
+                      "Treks",
+                      "Group only",
+                      "Private only",
+                      "For international tourists",
+                      "For local tourists",
+                    ].map((text) => (
                       <label className="block mb-1" key={text}>
                         <input type="checkbox" className="mr-2" /> {text}
                       </label>
@@ -78,17 +90,29 @@ const Listings = () => {
               </div>
 
               {/* Sort */}
-              <div className="relative">
+              <div
+                className="relative"
+                tabIndex={0}
+                onBlur={() => setSortOpen(false)}
+              >
                 <button
                   onClick={() => setSortOpen(!sortOpen)}
                   className="flex items-center gap-2 border border-gray-300 px-4 py-2 rounded-full text-sm"
+                  type="button"
                 >
                   <img src={sortIcon} alt="Sort" className="w-4" /> Sort by
                 </button>
                 {sortOpen && (
-                  <div className="absolute z-10 bg-white border border-gray-200 shadow-md rounded-md p-4 mt-2 w-64 text-sm">
+                  <div className="absolute right-0 z-10 bg-white border border-gray-200 shadow-md rounded-md p-4 mt-2 w-64 text-sm">
                     <h2 className="font-semibold mb-2">Sort by</h2>
-                    {["Price (Low to high)", "Price (High to low)", "Bookings (Low to high)", "Bookings (High to low)", "Newest First", "Oldest First"].map((text) => (
+                    {[
+                      "Price (Low to high)",
+                      "Price (High to low)",
+                      "Bookings (Low to high)",
+                      "Bookings (High to low)",
+                      "Newest First",
+                      "Oldest First",
+                    ].map((text) => (
                       <label className="block mb-1" key={text}>
                         <input type="checkbox" className="mr-2" /> {text}
                       </label>
@@ -102,10 +126,22 @@ const Listings = () => {
           {/* Table */}
           <div className="overflow-x-auto">
             <table className="table-auto w-full border text-sm min-w-[768px]">
-              <thead className="bg-white border-b">
-                <tr className="text-left">
-                  {["ID", "Created on", "Listing", "Title", "Type", "Bookings", "Price", "Status"].map((header) => (
-                    <th key={header} className="py-3 px-4 font-semibold border-r border-gray-200 last:border-r-0">
+              <thead className="bg-white border-b hover:bg-[#f8fbff] cursor-pointer">
+                <tr className="text-left hover:bg-[#f8fbff]">
+                  {[
+                    "ID",
+                    "Created on",
+                    "Listing",
+                    "Title",
+                    "Type",
+                    "Bookings",
+                    "Price",
+                    "Status",
+                  ].map((header) => (
+                    <th
+                      key={header}
+                      className="py-4 px-6 font-semibold border-r border-gray-200 last:border-r-0 hover:bg-[#f8fbff]"
+                    >
                       {header}
                     </th>
                   ))}
@@ -139,17 +175,27 @@ const Listings = () => {
                     statusColor: "#6b7280",
                   },
                 ].map((item, index) => (
-                  <tr key={index} className="border-t hover:bg-[#f8fbff] cursor-pointer">
-                    <td className="px-4 py-2 font-medium border-r border-gray-200">{item.id}</td>
-                    <td className="px-4 py-2 border-r border-gray-200">
+                  <tr
+                    key={index}
+                    className="border-t hover:bg-[#f8fbff] cursor-pointer"
+                  >
+                    <td className="px-6 py-4 font-medium border-r border-gray-200">
+                      {item.id}
+                    </td>
+                    <td className="px-6 py-4 border-r border-gray-200">
                       {item.date} <span className="text-gray-500">{item.time}</span>
                     </td>
-                    <td className="px-4 py-2 border-r border-gray-200">{item.type}</td>
-                    <td className="px-4 py-2 border-r border-gray-200">{item.title}</td>
-                    <td className="px-4 py-2 border-r border-gray-200">{item.group}</td>
-                    <td className="px-4 py-2 border-r border-gray-200">{item.bookings}</td>
-                    <td className="px-4 py-2 border-r border-gray-200">{item.price}</td>
-                    <td className="px-4 py-2 font-medium" style={{ color: item.statusColor }}>{item.status}</td>
+                    <td className="px-6 py-4 border-r border-gray-200">{item.type}</td>
+                    <td className="px-6 py-4 border-r border-gray-200">{item.title}</td>
+                    <td className="px-6 py-4 border-r border-gray-200">{item.group}</td>
+                    <td className="px-6 py-4 border-r border-gray-200">{item.bookings}</td>
+                    <td className="px-6 py-4 border-r border-gray-200">{item.price}</td>
+                    <td
+                      className="px-6 py-4 font-medium"
+                      style={{ color: item.statusColor }}
+                    >
+                      {item.status}
+                    </td>
                   </tr>
                 ))}
               </tbody>
@@ -160,13 +206,19 @@ const Listings = () => {
           <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center p-4 gap-2 text-sm text-gray-600">
             <div>Showing 10 of 129</div>
             <div className="flex gap-2 items-center text-[#999]">
-              <ChevronLeft strokeWidth={1} className="text-[#008558] w-6 h-6 cursor-pointer" />
+              <ChevronLeft
+                strokeWidth={1}
+                className="text-[#008558] w-6 h-6 cursor-pointer"
+              />
               <div className="flex gap-6">
                 <span className="cursor-pointer">1</span>
                 <span className="font-bold text-[#008558] cursor-pointer">2</span>
                 <span className="cursor-pointer">3</span>
               </div>
-              <ChevronRight strokeWidth={1} className="text-[#008558] w-6 h-6 cursor-pointer" />
+              <ChevronRight
+                strokeWidth={1}
+                className="text-[#008558] w-6 h-6 cursor-pointer"
+              />
             </div>
           </div>
         </div>
