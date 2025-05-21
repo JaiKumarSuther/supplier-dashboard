@@ -16,6 +16,9 @@ import MyReviews from "./components/Reviews";
 import PayoutInfoProcessed from "./components/PayoutInfo";
 import PayoutInfoPending from "./components/PayoutInfoPending";
 import LimitedDashboard from "./components/dashboard/LimitedDashboard";
+import BookingsTable from "./components/dashboard/BookingsTable";
+import BookingPage from "./components/BookingPage";
+import Listings from "./components/Listings";
 
 function App() {
   return (
@@ -28,8 +31,8 @@ function App() {
             <Route path="/" element={<Navigate to="/dashboard" replace />} />
             <Route path="/dashboard" element={<LimitedDashboard />} />
             <Route path="/profile" element={<MyProfile />} />
-            <Route path="/bookings" element={<BookingInfo />} />
-            <Route path="/listings" element={<ListingActivity />} />
+            <Route path="/bookings" element={<BookingPage />} />
+            <Route path="/listings" element={<Listings />} />
             <Route path="/inbox" element={<Inbox />} />
             <Route path="/support" element={<Support />} />
             <Route path="/support/details" element={<SupportDetails />} />

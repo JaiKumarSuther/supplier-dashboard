@@ -29,20 +29,20 @@ const activities = [
 
 const typeColors: Record<string, { text: string; bg: string }> = {
   'new booking': {
-    text: 'text-[#3484e3]',     // slightly faded blue
-    bg: 'bg-[#e9f2fe]',         // very light sky-blue
+    text: 'text-[#3484e3]', // slightly faded blue
+    bg: 'bg-[#e9f2fe]', // very light sky-blue
   },
   'booking cancelled': {
-    text: 'text-[#f9735a]',     // coral-orange
-    bg: 'bg-[#fff1eb]',         // creamy peach background
+    text: 'text-[#f9735a]', // coral-orange
+    bg: 'bg-[#fff1eb]', // creamy peach background
   },
   'payout processed': {
-    text: 'text-[#00c896]',     // aqua green
-    bg: 'bg-[#edfcf7]',         // mint background
+    text: 'text-[#00c896]', // aqua green
+    bg: 'bg-[#edfcf7]', // mint background
   },
   'review received': {
-    text: 'text-[#9b59f5]',     // soft violet
-    bg: 'bg-[#f4eefe]',         // lavender background
+    text: 'text-[#9b59f5]', // soft violet
+    bg: 'bg-[#f4eefe]', // lavender background
   },
 };
 
@@ -79,13 +79,14 @@ const renderBoldMessage = (message: string): React.ReactNode => {
 
 const ActivityFeed: React.FC = () => {
   return (
-    <div className="bg-white rounded-lg border mb-6">
+    <div className="bg-white rounded-lg border mb-6 max-w-3xl mx-auto">
       {/* Header */}
-      <h2 className="text-lg font-semibold border-b border-gray-200 p-6 text-[#1e2a49]">Recent Activity</h2>
-
+      <h2 className="text-lg font-semibold border-b border-gray-200 p-6 text-[#1e2a49]">
+        Recent Activity
+      </h2>
 
       {/* List */}
-      <ul className="space-y-6 text-sm text-gray-800 p-6">
+      <ul className="space-y-6 text-gray-800 p-4 sm:p-6">
         {activities.map((activity, idx) => {
           const color = typeColors[activity.type] || {
             text: 'text-gray-600',
@@ -93,15 +94,18 @@ const ActivityFeed: React.FC = () => {
           };
 
           return (
-            <li key={idx} className="space-y-2">
+            <li
+              key={idx}
+              className="space-y-2 rounded-md p-3 hover:bg-gray-50 transition-colors cursor-pointer"
+            >
               {/* Type + Time */}
               <div className="flex items-center gap-2">
                 <div
-                  className={`inline-flex items-center px-2 py-[2px] rounded-md ${color.text} ${color.bg} text-xs font-semibold`}
+                  className={`inline-flex items-center px-2 py-[2px] rounded-md ${color.text} ${color.bg} text-xs font-semibold select-none`}
                 >
-                  {activity.type}
+                  {activity.type.charAt(0).toUpperCase() + activity.type.slice(1)}
                 </div>
-                <div className="flex items-center text-gray-400 text-xs gap-1">
+                <div className="flex items-center text-gray-400 text-xs gap-1 select-none">
                   <ClockIcon className="w-4 h-4" />
                   <span>{activity.time}</span>
                 </div>

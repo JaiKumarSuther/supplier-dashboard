@@ -6,7 +6,7 @@ import sortIcon from "../../public/images/sort by icon.svg";
 import addIcon from "../../public/images/Add icon.svg";
 import downloadIcon from "../../public/images/download icon.svg";
 
-const ListingComponent = () => {
+const Listings = () => {
   const [filterOpen, setFilterOpen] = useState(false);
   const [sortOpen, setSortOpen] = useState(false);
 
@@ -175,4 +175,4 @@ const ListingComponent = () => {
   );
 };
 
-export default ListingComponent;
+export default Listings;
