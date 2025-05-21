@@ -87,9 +87,9 @@ const RevenueChart = () => {
   }, []);
 
   return (
-    <div className="bg-white rounded-lg border px-4 py-3 flex items-center w-full" style={{ height: '300px' }}>
+    <div className="bg-white rounded-lg border p-5 flex items-center justify-between w-full" style={{ height: '300px' }}>
       {/* Chart Section */}
-      <div className="w-[82%] h-full pr-2">
+      <div className="w-[75%] h-full pr-2">
         <h2 className="text-lg font-semibold text-[#1e2a49] mb-1">Revenue</h2>
         <div className="relative w-full h-[230px] overflow-visible">
           <canvas ref={chartRef} className="absolute top-0 left-0 w-full h-full" />

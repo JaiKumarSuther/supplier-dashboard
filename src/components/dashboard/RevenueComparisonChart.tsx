@@ -97,11 +97,11 @@ const RevenueComparisonChart = () => {
 
   return (
     <div
-      className="bg-white rounded-lg border p-3 flex items-center w-full"
+      className="bg-white rounded-lg border p-5 flex items-center justify-between w-full"
       style={{ height: "300px" }}
     >
       {/* Chart Area: Wider now */}
-      <div className="w-[80%] h-full">
+      <div className="w-[75%] h-full">
         <h2 className="text-lg font-semibold text-[#1e2a49] mb-1">
           Revenue Comparison
         </h2>
