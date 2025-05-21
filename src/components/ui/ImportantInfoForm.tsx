@@ -1,5 +1,4 @@
 import { useState } from "react";
-import addMoreIcon from "../../../public/images/add more icon.svg";
 import ListingButtons from "../ListingButtons";
 
 interface Section {

@@ -1,5 +1,3 @@
-import React from "react";
-
 import searchIcon from "../../../public/images/search icon.svg";
 import filterIcon from "../../../public/images/filter icon.svg";
 import sortByIcon from "../../../public/images/sort by icon.svg";

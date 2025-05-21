@@ -1,4 +1,3 @@
-import AutoGenerate from "../../public/images/auto-generate.jpg";
 import FreeCancel from "../../public/images/Free cancellation icon.svg";
 import SendIcon from "../../public/images/send-message icon.svg";
 import CancelIcon from "../../public/images/cancel booking icon in booking detail.svg";
