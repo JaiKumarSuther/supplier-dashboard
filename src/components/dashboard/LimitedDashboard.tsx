@@ -70,9 +70,9 @@ const LimitedDashboard = () => {
             </div>
           </div>
 
-          <div className="mt-6">
+          {/* <div className="mt-6">
             <BookingsTable />
-          </div>
+          </div> */}
         </div>
       </div>
     </div>
