@@ -4,8 +4,8 @@ import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { toast } from "sonner";
 
-const logo = "/images/ninja-logo.svg";
-const supportIcon = "/images/support2.svg";
+const logo = "../../public/images/ninja-logo.svg";
+const supportIcon = "../../public/images/support2.svg";
 
 const SupplierLogin = () => {
   const [email, setEmail] = useState("");

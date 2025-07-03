@@ -1,9 +1,9 @@
-const EventicaLogo = "/images/eventica.png";
-const AutoGenerate = "/images/auto-generate.jpg";
-const MenuDots = "/images/menu-dots-svgrepo-com.svg";
-const DownloadIcon = "/images/download-icon.svg";
-const AttachMedia = "/images/attach-media.svg";
-const SendIcon = "/images/send-hor-svgrepo-com.svg";
+const EventicaLogo = "../../public/images/eventica.png";
+const AutoGenerate = "../../public/images/auto-generate.jpg";
+const MenuDots = "../../public/images/menu-dots-svgrepo-com.svg";
+const DownloadIcon = "../../public/images/download-icon.svg";
+const AttachMedia = "../../public/images/attach-media.svg";
+const SendIcon = "../../public/images/send-hor-svgrepo-com.svg";
 import { toast } from "sonner";
 
 type Message = {

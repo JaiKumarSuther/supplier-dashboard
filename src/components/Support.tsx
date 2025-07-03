@@ -5,9 +5,9 @@ import { useState, useEffect } from "react";
 import { ChevronLeft, ChevronRight } from "lucide-react";
 import { useNavigate } from "react-router-dom";
 
-const searchIcon = "/images/search-icon.svg";
-const sortIcon = "/images/sort-by-icon.svg";
-const addIcon = "/images/add-icon.svg";
+const searchIcon = "../../public/images/search-icon.svg";
+const sortIcon = "../../public/images/sort-by-icon.svg";
+const addIcon = "../../public/images/add-icon.svg";
 
 type SupportTicket = {
   ticket_id: string;

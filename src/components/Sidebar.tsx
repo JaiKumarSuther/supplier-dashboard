@@ -1,14 +1,14 @@
 import { Link, useLocation } from "react-router-dom";
 
-const logo = "/images/NINJA-logo.svg";
-const homeIcon = "/images/home-icon.svg";
-const profileIcon = "/images/profile-icon.svg";
-const bookingsIcon = "/images/bookings-icon.svg";
-const listingsIcon = "/images/listings.svg";
-const inboxIcon = "/images/inbox-icon.svg";
-const supportIcon = "/images/support-icon.svg";
-const reviewsIcon = "/images/reviews-icon.svg";
-const payoutsIcon = "/images/payouts-icon.svg";
+const logo = "../../public/images/NINJA-logo.svg";
+const homeIcon = "../../public/images/home-icon.svg";
+const profileIcon = "../../public/images/profile-icon.svg";
+const bookingsIcon = "../../public/images/bookings-icon.svg";
+const listingsIcon = "../../public/images/listings.svg";
+const inboxIcon = "../../public/images/inbox-icon.svg";
+const supportIcon = "../../public/images/support-icon.svg";
+const reviewsIcon = "../../public/images/reviews-icon.svg";
+const payoutsIcon = "../../public/images/payouts-icon.svg";
 
 const Sidebar = () => {
   const location = useLocation();
