@@ -4,11 +4,11 @@ import { useNavigate } from "react-router-dom";
 import { saveAs } from "file-saver";
 import { toast } from "sonner";
 
-const searchIcon = "../../public/images/search-icon.svg";
-const filterIcon = "../../public/images/filter-icon.svg";
-const sortIcon = "../../public/images/sort-by-icon.svg";
-const addIcon = "../../public/images/add-icon.svg";
-const downloadIcon = "../../public/images/download-icon.svg";
+const searchIcon = "/images/search-icon.svg";
+const filterIcon = "/images/filter-icon.svg";
+const sortIcon = "/images/sort-by-icon.svg";
+const addIcon = "/images/add-icon.svg";
+const downloadIcon = "/images/download-icon.svg";
 import viewIcon from "../assets/icons/view-icon.svg";
 import editIcon from "../assets/icons/edit-icon.svg";
 import availIcon from "../assets/icons/avail-icon.svg";

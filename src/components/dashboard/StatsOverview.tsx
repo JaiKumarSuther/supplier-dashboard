@@ -1,7 +1,7 @@
 import React from "react";
 const revenueIcon = "/images/revmon-icon-in-overview-card.svg";
-const bookingIcon = "../../../public/images/Bookings-icon-in-overview-cards.svg";
-const avgIcon = "../../../public/images/average-booking-value-icon-in-overview-cards.svg";
+const bookingIcon = "/images/Bookings-icon-in-overview-cards.svg";
+const avgIcon = "/images/average-booking-value-icon-in-overview-cards.svg";
 const ratingIcon = "/images/rev-icon-in-overview-card.svg";
 
 const stats = [

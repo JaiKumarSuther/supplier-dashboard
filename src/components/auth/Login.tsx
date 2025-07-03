@@ -4,8 +4,8 @@ import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { toast } from "sonner";
 
-const logo = "../../public/images/ninja-logo.svg";
-const supportIcon = "../../public/images/support2.svg";
+const logo = "/images/ninja-logo.svg";
+const supportIcon = "/images/support2.svg";
 
 const SupplierLogin = () => {
   const [email, setEmail] = useState("");
@@ -98,12 +98,12 @@ const SupplierLogin = () => {
             >
               {loading ? "Logging in..." : "Sign In"}
             </button>
-            {/* <div className="mt-3 text-sm text-[#283456]">
-              Don’t have an account?{" "}
+            <div className="mt-3 text-sm text-[#283456]">
+              Don't have an account?
               <a href="/signup" className="text-[#008558] font-medium">
                 Sign Up
               </a>
-            </div> */}
+            </div>
           </div>
         </div>
       </div>

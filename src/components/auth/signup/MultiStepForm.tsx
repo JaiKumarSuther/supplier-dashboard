@@ -3,7 +3,7 @@ import { ChevronDown, Upload, Calendar, Clock, X } from "lucide-react";
 import { toast } from "sonner";
 import { useNavigate } from "react-router-dom";
 import PhoneInput from "../../ui/PhoneInput";
-const logo = "../../public/images/travelninja.png";
+const logo = "/images/travelninja.png";
 
 interface FormData {
   userType: string;

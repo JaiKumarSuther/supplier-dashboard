@@ -5,10 +5,10 @@ import { useState, useEffect } from "react";
 import { saveAs } from "file-saver";
 import { useNavigate } from "react-router-dom";
 
-const searchIcon = "../../public/images/search-icon.svg";
-const filterIcon = "../../public/images/filter-icon.svg";
-const sortIcon = "../../public/images/sort-by-icon.svg";
-const downloadIcon = "../../public/images/download-icon.svg";
+const searchIcon = "/images/search-icon.svg";
+const filterIcon = "/images/filter-icon.svg";
+const sortIcon = "/images/sort-by-icon.svg";
+const downloadIcon = "/images/download-icon.svg";
 
 type Booking = {
   booking_id: string;

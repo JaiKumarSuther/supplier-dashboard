@@ -4,8 +4,8 @@
 import { useState } from "react";
 import { registerUser } from "../../api/index";  // Updated import to point to /src/api
 
-const logo = "../../public/images/ninja-logo.svg";
-const supportIcon = "../../public/images/support2.svg";
+const logo = "/images/ninja-logo.svg";
+const supportIcon = "/images/support2.svg";
 
 const SupplierSignup = () => {
   const [fullName, setFullName] = useState("");

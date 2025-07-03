@@ -4,10 +4,10 @@ import { useState, useEffect } from "react";
 import { useParams } from "react-router-dom"; // Using useParams to get the dynamic booking ID
 import { fetchData } from "../api/index"; // Import fetch utility
 
-const FreeCancel = "../../public/images/free-cancellation-icon.svg";
-const SendIcon = "../../public/images/send-message-icon.svg";
-const CancelIcon = "../../public/images/cancel-booking-icon-in-booking-detail.svg";
-const TourImage = "../../public/images/hunza-tour.png";
+const FreeCancel = "/images/free-cancellation-icon.svg";
+const SendIcon = "/images/send-message-icon.svg";
+const CancelIcon = "/images/cancel-booking-icon-in-booking-detail.svg";
+const TourImage = "/images/hunza-tour.png";
 
 // Define the Booking type to ensure proper type checking
 export interface Booking {

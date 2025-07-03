@@ -2,9 +2,9 @@ import { useState, useEffect } from "react";
 import { ChevronLeft, ChevronRight } from "lucide-react";
 import { saveAs } from "file-saver";
 
-const searchIcon = "../../public/images/search-icon.svg";
-const sortIcon = "../../public/images/sort-by-icon.svg";
-const downloadIcon = "../../public/images/download-icon.svg";
+const searchIcon = "/images/search-icon.svg";
+const sortIcon = "/images/sort-by-icon.svg";
+const downloadIcon = "/images/download-icon.svg";
 
 // Dummy data
 // const dummyPayouts = [
