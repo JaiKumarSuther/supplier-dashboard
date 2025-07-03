@@ -1,7 +1,6 @@
 import { useEffect, useState } from "react";
 import ActivityFeed from "./ActivityFeed";
 import BookingsChart from "./BookingsChart";
-import BookingsTable from "./BookingsTable";
 import MessagesPanel from "./MessagesPanel";
 import RevenueChart from "./RevenueChart";
 import RevenueComparisonChart from "./RevenueComparisonChart";
