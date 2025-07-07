@@ -1,42 +1,86 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 const revenueIcon = "/images/revmon-icon-in-overview-card.svg";
 const bookingIcon = "/images/Bookings-icon-in-overview-cards.svg";
 const avgIcon = "/images/average-booking-value-icon-in-overview-cards.svg";
 const ratingIcon = "/images/rev-icon-in-overview-card.svg";
 
-const stats = [
-  {
-    label: "This month's revenue",
-    value: "2,163,527",
-    change: "-10%",
-    icon: revenueIcon,
-  },
-  {
-    label: "Bookings this month",
-    value: "320",
-    change: "+78",
-    icon: bookingIcon,
-  },
-  {
-    label: "Average booking value",
-    value: "48,230 PKR",
-    change: "+4,530",
-    icon: avgIcon,
-  },
-  {
-    label: "Your overall ratings",
-    value: "4.3",
-    change: "+12",
-    icon: ratingIcon,
-  },
-];
-
 const StatsOverview: React.FC = () => {
+  const [stats, setStats] = useState([
+    {
+      label: "This month's revenue",
+      value: "Loading...",
+      change: "0%",
+      icon: revenueIcon,
+    },
+    {
+      label: "Bookings this month",
+      value: "Loading...",
+      change: "0",
+      icon: bookingIcon,
+    },
+    {
+      label: "Average booking value",
+      value: "Loading...",
+      change: "0",
+      icon: avgIcon,
+    },
+    {
+      label: "Your overall ratings",
+      value: "Loading...",
+      change: "0",
+      icon: ratingIcon,
+    },
+  ]);
+
+  useEffect(() => {
+    const token = localStorage.getItem("token");
+    const supplierId = localStorage.getItem("supplier_id");
+
+    if (!token || !supplierId) return;
+
+    fetch(`http://localhost:9000/api/v1/suppliers/${supplierId}/dashboard/summary`, {
+      headers: { Authorization: `Bearer ${token}` },
+    })
+      .then((res) => res.json())
+      .then((data) => {
+        const updatedStats = [
+          {
+            label: "This month's revenue",
+            value: `${Number(data.revenueThisMonth).toLocaleString()} PKR`,
+            change: data.revenueChange ? `${data.revenueChange}%` : "0%",
+            icon: revenueIcon,
+          },
+          {
+            label: "Bookings this month",
+            value: `${data.bookingsThisMonth}`,
+            change: `${data.bookingsChange ?? 0}`,
+            icon: bookingIcon,
+          },
+          {
+            label: "Average booking value",
+            value: `${data.avgBookingValue.toLocaleString()} PKR`,
+            change: `${data.avgBookingValueChange ?? 0}`,
+            icon: avgIcon,
+          },
+          {
+            label: "Your overall ratings",
+            value: `${data.avgRating || "N/A"}`,
+            change: `${data.ratingChange ?? 0}`,
+            icon: ratingIcon,
+          },
+        ];
+        setStats(updatedStats);
+      })
+      .catch((err) => {
+        console.error("❌ Failed to fetch stats:", err);
+      });
+  }, []);
+
   return (
     <div className="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-4 gap-4 sm:gap-6 mt-4">
       {stats.map((item, idx) => {
-        const isNegative = item.change.startsWith("-");
-        const changeColor = isNegative ? "text-[#00D382]" : "text-[#00D382]";
+        const isNegative = item.change.toString().startsWith("-");
+        const changeColor = isNegative ? "text-red-500" : "text-[#00D382]";
 
         return (
           <div

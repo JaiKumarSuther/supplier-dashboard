@@ -1,59 +1,24 @@
-import React from 'react';
+"use client";
+
+import React, { useEffect, useState } from 'react';
 import { Clock } from 'lucide-react';
 
-const activities = [
-  {
-    type: 'new booking',
-    time: '1 min ago',
-    message:
-      'You have a new booking for Day Colors of Hunza Valley Cultural Tour on 26th Aug 2025.',
-  },
-  {
-    type: 'booking cancelled',
-    time: '28 min ago',
-    message:
-      'Wamiq Ahmed has canceled their booking for 14 Days K2 Base Camp Trekking Expedition.',
-  },
-  {
-    type: 'payout processed',
-    time: '1 hr ago',
-    message:
-      'Your payout of PKR 456,400 for booking# F81237-23478 has been processed.',
-  },
-  {
-    type: 'review received',
-    time: '2 hr ago',
-    message: 'Wamiq Ahmed has left a 4-star review on your listing.',
-  },
-];
-
 const typeColors: Record<string, { text: string; bg: string }> = {
-  'new booking': {
+  booking: {
     text: 'text-[#3497F7]',
     bg: 'bg-[#F3FBFF]',
   },
-  'booking cancelled': {
-    text: 'text-[#F98C69]',
-    bg: 'bg-[#FFF9F5]',
-  },
-  'payout processed': {
+  payout: {
     text: 'text-[#37CF83]',
     bg: 'bg-[#F6FFFC]',
   },
-  'review received': {
+  review: {
     text: 'text-[#7D24FE]',
     bg: 'bg-[#FAF2FF]',
   },
 };
 
-const boldPhrases = [
-  'Day Colors of Hunza Valley Cultural Tour',
-  '14 Days K2 Base Camp Trekking Expedition',
-  'PKR 456,400',
-  'booking# F81237-23478',
-  'Wamiq Ahmed',
-  '4-star',
-];
+const boldPhrases = ['booking', 'payout', 'review', 'PKR', 'star', 'customer'];
 
 const renderBoldMessage = (message: string): React.ReactNode => {
   let parts: React.ReactNode[] = [message];
@@ -77,15 +42,50 @@ const renderBoldMessage = (message: string): React.ReactNode => {
   return <>{parts}</>;
 };
 
-const ActivityFeed: React.FC = () => {
+interface Activity {
+  type: 'booking' | 'payout' | 'review';
+  date: string;
+  details: any;
+}
+
+const ActivityFeed: React.FC<{ supplierId: string }> = ({ supplierId }) => {
+  const [activities, setActivities] = useState<Activity[]>([]);
+
+  useEffect(() => {
+    const token = localStorage.getItem('token');
+    if (!supplierId || !token) return;
+
+    fetch(`http://localhost:9000/api/v1/suppliers/${supplierId}/dashboard`, {
+      headers: { Authorization: `Bearer ${token}` },
+    })
+      .then(res => res.json())
+      .then(data => {
+        setActivities(data.recentActivity || []);
+      })
+      .catch(err => {
+        console.error('Error loading activity feed:', err);
+      });
+  }, [supplierId]);
+
+  const formatMessage = (activity: Activity): string => {
+    switch (activity.type) {
+      case 'booking':
+        return `${activity.details.customer} booked ${activity.details.listing}`;
+      case 'payout':
+        return `Payout of PKR ${activity.details.amount?.toLocaleString()} (${activity.details.status}) processed.`;
+      case 'review':
+        return `${activity.details.customer} left a ${activity.details.rating}-star review.`;
+      default:
+        return 'Activity recorded.';
+    }
+  };
+
   return (
-    <div className="w-full bg-white rounded-lg border mb-6 max-w-3xl mx-auto">
-      {/* Header */}
+    <div className="w-full bg-white min-h-[500px] rounded-lg border mb-6 max-w-3xl mx-auto">
       <h2 className="text-lg sm:text-[20px] font-semibold border-b border-gray-200 p-4 sm:p-6 text-[#283456]">
         Recent Activity
       </h2>
 
-      {/* List */}
       <ul className="space-y-4 sm:space-y-6 text-gray-800 p-4 sm:p-6">
         {activities.map((activity, idx) => {
           const color = typeColors[activity.type] || {
@@ -98,7 +98,6 @@ const ActivityFeed: React.FC = () => {
               key={idx}
               className="space-y-2 rounded-md p-2 sm:p-3 hover:bg-gray-50 transition-colors cursor-pointer"
             >
-              {/* Type + Time */}
               <div className="flex flex-col sm:flex-row sm:items-center gap-2">
                 <div
                   className={`inline-flex items-center px-2 py-[2px] rounded-md ${color.text} ${color.bg} text-xs sm:text-[13px] select-none w-fit`}
@@ -107,13 +106,12 @@ const ActivityFeed: React.FC = () => {
                 </div>
                 <div className="flex items-center text-[#AEAEAE] text-[10px] sm:text-[11px] gap-0.5 select-none">
                   <Clock className="w-3 h-3 sm:w-4 sm:h-4" />
-                  <span>{activity.time}</span>
+                  <span>{new Date(activity.date).toLocaleString()}</span>
                 </div>
               </div>
 
-              {/* Message */}
               <p className="text-sm sm:text-[15px] leading-relaxed text-[#283456]">
-                {renderBoldMessage(activity.message)}
+                {renderBoldMessage(formatMessage(activity))}
               </p>
             </li>
           );
