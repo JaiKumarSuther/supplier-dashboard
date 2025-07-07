@@ -7,8 +7,7 @@ import RevenueComparisonChart from "./RevenueComparisonChart";
 import StatsOverview from "./StatsOverview";
 
 const LimitedDashboard = () => {
-
-    const [userName, setUserName] = useState<string>("...");
+  const [userName, setUserName] = useState<string>("...");
   const [token, setToken] = useState<string | null>(null);
   const [userId, setUserId] = useState<string | null>(null);
 
@@ -38,11 +37,11 @@ const LimitedDashboard = () => {
   }, []);
 
   useEffect(() => {
-  if (token && userId) {
-    console.log("Using token and userId somewhere...");
-  }
-}, [token, userId]);
-  
+    if (token && userId) {
+      console.log("Using token and userId somewhere...");
+    }
+  }, [token, userId]);
+
   return (
     <div className="flex pb-20 w-full h-full">
       {/* Dashboard Content */}

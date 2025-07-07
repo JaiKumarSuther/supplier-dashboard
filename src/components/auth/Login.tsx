@@ -100,7 +100,7 @@ const SupplierLogin = () => {
             </button>
             <div className="mt-3 text-sm text-[#283456]">
               Don't have an account?
-              <a href="/signup" className="text-[#008558] font-medium">
+              <a href="https://supplier-onboarding.vercel.app/" className="text-[#008558] font-medium">
                 Sign Up
               </a>
             </div>
